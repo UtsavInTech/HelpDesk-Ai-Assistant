@@ -45,11 +45,12 @@ The application provides a modern chat experience with conversation history, mul
 
 
 ##  Screenshots
-![alt text](src/assets/HelpDesk_Image01.png)
-![alt text](src/assets/HelpDesk_Image02.png)
-![alt text](src/assets/HelpDesk_Image03.png)
-![alt text](src/assets/HelpDesk_Image04.png)
-![alt text](src/assets/HelpDesk_Image05.png)
+
+![Home](Frontend/src/assets/HelpDesk_Image01.png)
+![Chat](Frontend/src/assets/HelpDesk_Image02.png)
+![Persona](Frontend/src/assets/HelpDesk_Image03.png)
+![History](Frontend/src/assets/HelpDesk_Image04.png)
+![Responsive Ui](Frontend/src/assets/HelpDesk_Image05.png)
 
 
 ## Project Structure
@@ -79,7 +80,7 @@ HelpDesk/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/helpdesk-ai.git
+git clone https://github.com/UtsavInTech/HelpDesk-Ai-Assistant
 ```
 ### Backend
 ```bash
