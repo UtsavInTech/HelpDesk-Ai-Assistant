@@ -1,0 +1,304 @@
+/* 1. Base Sidebar Layout (Merged & Cleaned)*/
+.sidebar {
+    background-color: #171717;
+    color: #b4b4b4;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    /* Smooth sliding width transitions */
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* STATE 1: FULL OPEN MODE */
+.sidebar.visible {
+    width: clamp(250px, 22vw, 320px);
+    min-width: 250px;
+}
+
+.sidebar.visible .sidebar-full-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between; 
+}
+
+.sidebar.visible .sidebar-collapsed-content {
+    display: none !important;
+}
+
+/* STATE 2: NARROW COLLAPSED TRACK (Prevents overlapping on main chat titles) */
+.sidebar.hidden {
+    width: 60px;
+    min-width: 60px;
+    border-right: 1px solid rgba(255, 255, 255, 0.08); /* Fine divider line separating helpdesk label */
+}
+
+.sidebar.hidden .sidebar-full-content {
+    display: none !important;
+}
+
+.sidebar.hidden .sidebar-collapsed-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 15px;
+    height: 100%;
+    width: 100%;
+    gap: 16px;
+    position: relative;
+    box-sizing: border-box;
+}
+
+/*2. Top Row Header Elements (Logo + Powered By Text + Controls)*/
+.sidebar-top-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 10px 14px;
+    gap: 10px;
+}
+
+.powered-by-text {
+    font-size: 11px;
+    font-weight: 500;
+    color: #ffffff;
+    white-space: nowrap;
+    opacity: 0.9;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logo-container .logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    filter: invert(1);
+}
+
+/* Standardized control icon action buttons */
+.icon-btn {
+    background: transparent;
+    border: none;
+    color: #b4b4b4;
+    font-size: 16px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.icon-btn:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+/*  3. Collapsible Recents Header Toggler */
+.recent-toggle-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #b4b4b4;
+    padding: 10px 14px;
+    margin-top: 15px;
+    cursor: pointer;
+    border-radius: 6px;
+    user-select: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.recent-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+}
+
+.recent-toggle-btn .chevron-icon {
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+.recent-toggle-btn.active .chevron-icon {
+    transform: rotate(90deg); /* Faces downwards when drawer is open */
+}
+
+/* 4. Chat Threads List History */
+.history {
+    margin: 10px;
+    padding: 10px;
+    height: 100%;
+    overflow-y: auto; /* Adds a nice scroll track if titles get very long */
+}
+
+.history.hide {
+    display: none;
+}
+
+.history.show {
+    display: block;
+}
+
+.history li {
+    list-style-type: none;
+    cursor: pointer;
+    padding: 8px 12px; /* Smoothed original padding rules */
+    margin-bottom: 0.3rem;
+    font-size: 14px;
+    position: relative;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.history li:hover, .highlighted {
+    background-color: rgba(180, 180, 180, 0.05);
+}
+
+/* Delete trash icon layout management */
+.fa-trash {
+    opacity: 0;
+    transition: opacity 0.2s ease, color 0.2s ease;
+}
+
+.history li:hover .fa-trash {
+    opacity: 1;
+    color: #b4b4b4;
+}
+
+.fa-trash:hover {
+    color: #f87171 !important; /* Soft flat red highlight on explicit hover */
+}
+
+/*  5. Narrow State Collapsed Content & Footer */
+.sidebar-collapsed-content .action-item {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    color: #b4b4b4;
+}
+
+.collapsed-user-avatar {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+}
+
+.mini-avatar {
+    width: 32px;
+    height: 32px;
+    background-color: #ec4899; /* Colorful base default icon ring */
+    border-radius: 50%;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.sign {
+    padding: 10px;
+    margin: 10px;
+    font-size: 14px;
+    text-align: center;
+    border-top: solid 0.25px rgba(255, 255, 255, 0.2);
+}
+
+/* 6. Custom Fluid Tooltips (Forced Outside of Layout Context) */
+.tooltip-wrapper {
+    position: relative !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Builds the black floating tooltip box hidden by default */
+.tooltip-wrapper::after {
+    content: attr(data-tooltip);
+    position: absolute !important;   /* Forces it out of layout tracking entirely */
+    left: 55px !important;           /* Pushes card cleanly over to the right side of track */
+    top: 50% !important;
+    transform: translateY(-50%) scale(0.95);
+    background-color: #0d0d0d;  
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;             /* Prevents text break wrapping spaces */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    pointer-events: none;       
+    opacity: 0 !important;
+    visibility: hidden !important;   /* Ensures layout ignores box metrics entirely */
+    transition: opacity 0.12s ease, transform 0.12s ease, visibility 0.12s ease;
+    z-index: 99999 !important;       /* Layered safely above your chat content viewport */
+}
+
+/* Fades the dark tooltip into view smoothly on mouse hover */
+.tooltip-wrapper:hover::after {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(-50%) scale(1);
+}
+
+
+/* Styling for the new standalone New Chat container row */
+.sidebar-new-chat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    margin: 10px 14px 5px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+/* Gray background highlight overlay upon cursor hover */
+.sidebar-new-chat-row:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Groups plus icon with text descriptor label */
+.new-chat-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Scale adjustments to keep structural text icons crisp */
+.plus-icon {
+    font-size: 14px;
+    color: #b4b4b4;
+}
+
+.pen-icon {
+    font-size: 14px;
+    color: #b4b4b4;
+}
+
+.sidebar-new-chat-row:hover .plus-icon,
+.sidebar-new-chat-row:hover .pen-icon {
+    color: #ffffff;
+}
