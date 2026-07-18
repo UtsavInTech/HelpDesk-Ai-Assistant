@@ -2,6 +2,7 @@ import "./Sidebar.css";
 import { useContext, useEffect, useState } from "react";
 import { MyContext } from "./MyContext.jsx";
 import { v1 as uuidv1 } from "uuid";
+import logo from "./assets/blacklogo.png";
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Sidebar() {
@@ -64,7 +65,7 @@ function Sidebar() {
             <div className="sidebar-full-content">
                 <div className="sidebar-top-header">
                     <div className="logo-container" onClick={createNewChat} style={{ cursor: "pointer" }}>
-                        <img src="src/assets/blacklogo.png" alt="gpt logo" className="logo" />
+                        <img src={logo} alt="HelpDesk logo" className="logo" />
                     </div>
 
                     <span className="powered-by-text">HelpDesk - An Ai Assistant</span>
