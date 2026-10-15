@@ -1,12 +1,12 @@
 ![React](https://img.shields.io/badge/React-19-blue) ![Node](https://img.shields.io/badge/Node.js-Express-green) ![MongoDB](https://img.shields.io/badge/MongoDB-Database-brightgreen) ![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o--Mini-purple) ![Vercel](https://img.shields.io/badge/Deployed-Vercel-black?logo=vercel) ![Render](https://img.shields.io/badge/Backend-Render-46E3B7?logo=render) ![License](https://img.shields.io/badge/License-MIT-blue)
-> 🚀 **Live Application:** https://help-desk-ai-assistant.vercel.app
+> **Live Application:** https://help-desk-ai-assistant.vercel.app
 # HelpDesk AI
 An AI-powered ChatGPT-inspired conversational assistant built with React, Node.js, MongoDB, and the OpenAI GPT-4o Mini API.
 
 The application provides a modern chat experience with conversation history, multiple AI personalities, persistent chat threads, and a responsive user interface.
 
 ## Live Demo
-🚀 **Frontend (Vercel)** [![Vercel](https://img.shields.io/badge/Live-Vercel-black?logo=vercel)](https://help-desk-ai-assistant.vercel.app)
+**Frontend (Vercel)** [![Vercel](https://img.shields.io/badge/Live-Vercel-black?logo=vercel)](https://help-desk-ai-assistant.vercel.app)
 - https://help-desk-ai-assistant.vercel.app
 
 ⚙️ **Backend API (Render)** [![Render](https://img.shields.io/badge/API-Render-46E3B7?logo=render)](https://helpdesk-ai-assistant.onrender.com)
