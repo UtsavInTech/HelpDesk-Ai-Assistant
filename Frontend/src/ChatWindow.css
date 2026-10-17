@@ -1,0 +1,379 @@
+.chatWindow {
+    background-color: var(--sg-bg-main);
+    height: 100vh;
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* navbar */
+.navbar {
+    box-sizing: border-box;
+    padding: 10px 16px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.brand {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--sg-text);
+    letter-spacing: -0.01em;
+    padding: 6px 10px;
+}
+
+.userIconDiv {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.userIcon {
+    background-color: var(--sg-bubble);
+    font-family: var(--sg-font);
+    padding: 0;
+    border: 1px solid var(--sg-border);
+    height: 30px;
+    width: 30px;
+    border-radius: var(--sg-radius-pill);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--sg-text);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.15s ease;
+}
+
+.userIcon:hover {
+    background-color: var(--sg-bg-hover);
+}
+
+/* composer */
+.composerArea {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+}
+
+.chatLoader {
+    display: flex;
+    justify-content: center;
+    padding: 6px 0;
+}
+
+.chatInput {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputBox {
+    box-sizing: border-box;
+    width: 92%;
+    max-width: 760px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--sg-bg-composer);
+    border: 1px solid var(--sg-border);
+    border-radius: 26px;
+    transition: border-color 0.15s ease;
+}
+
+.inputBox:focus-within {
+    border-color: var(--sg-border-strong);
+}
+
+/* scoped so it never leaks onto the sidebar search or the auth form */
+.inputBox .promptInput {
+    width: 100%;
+    border: none;
+    background: transparent;
+    padding: 16px 52px 16px 8px;
+    font-family: var(--sg-font);
+    font-size: 15px;
+    color: var(--sg-text);
+    border-radius: 26px;
+}
+
+.inputBox .promptInput::placeholder {
+    color: var(--sg-text-muted);
+}
+
+.inputBox .promptInput:focus {
+    outline: none;
+}
+
+/* paperclip */
+.attachBtn {
+    flex-shrink: 0;
+    margin-left: 10px;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: var(--sg-radius-pill);
+    color: var(--sg-text-secondary);
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.attachBtn:hover:not(:disabled) {
+    background-color: var(--sg-bg-hover);
+    color: var(--sg-text);
+}
+
+.attachBtn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* attached PDF chips - sit under the navbar, not in the composer,
+   because they belong to the whole chat rather than one message */
+.attachmentBar {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 800px;
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 0 1.5rem 10px;
+    margin: 0 auto;
+}
+
+.attachmentBarLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--sg-text-muted);
+}
+
+.attachmentBarLabel i {
+    font-size: 11px;
+    color: var(--sg-text-muted);
+}
+
+.attachment {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    max-width: 240px;
+    padding: 5px 6px 5px 10px;
+    background-color: var(--sg-bubble);
+    border: 1px solid var(--sg-border);
+    border-radius: var(--sg-radius-pill);
+    font-size: 13px;
+    color: var(--sg-text);
+}
+
+.attachment > i {
+    color: #ef4444;
+    font-size: 13px;
+}
+
+.attachment.pending {
+    padding-right: 12px;
+    color: var(--sg-text-secondary);
+}
+
+.attachment.pending i {
+    color: var(--sg-text-secondary);
+}
+
+.attachmentName {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.attachmentRemove {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: var(--sg-radius-pill);
+    color: var(--sg-text-secondary);
+    font-size: 11px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.attachmentRemove:hover {
+    background-color: var(--sg-bg-hover);
+    color: var(--sg-text);
+}
+
+#submit {
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sg-accent);
+    border: none;
+    border-radius: var(--sg-radius-pill);
+    transition: opacity 0.15s ease;
+}
+
+#submit i {
+    color: var(--sg-accent-text);
+}
+
+#submit:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+}
+
+#submit:not(:disabled):hover {
+    opacity: 0.85;
+}
+
+.info {
+    font-size: 12px;
+    padding: 8px;
+    margin: 0;
+    color: var(--sg-text-muted);
+}
+
+/* profile dropdown */
+.dropDown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 220px;
+    background-color: var(--sg-bg-elevated);
+    border: 1px solid var(--sg-border);
+    padding: 6px;
+    border-radius: var(--sg-radius-md);
+    text-align: left;
+    z-index: 1000;
+    box-shadow: var(--sg-shadow);
+}
+
+.dropDownItem {
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
+    border: none;
+    font-family: var(--sg-font);
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    padding: 9px 10px;
+    border-radius: var(--sg-radius-sm);
+    color: var(--sg-text);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.dropDownItem i {
+    width: 16px;
+    font-size: 14px;
+    color: var(--sg-text-secondary);
+}
+
+.dropDownItem:hover {
+    background-color: var(--sg-bg-hover);
+}
+
+.dropDownItem.accountItem {
+    cursor: default;
+    margin-bottom: 4px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--sg-border);
+    border-radius: 0;
+}
+
+.dropDownItem.accountItem:hover {
+    background-color: transparent;
+}
+
+.accountEmail {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    color: var(--sg-text-secondary);
+}
+
+.chatError {
+    box-sizing: border-box;
+    margin: 0 auto 8px;
+    width: 92%;
+    max-width: 760px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--sg-danger);
+    background-color: color-mix(in srgb, var(--sg-danger) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--sg-danger) 30%, transparent);
+    border-radius: var(--sg-radius-md);
+    padding: 9px 12px;
+    text-align: left;
+}
+
+.chatError i {
+    color: var(--sg-danger);
+}
+
+@media (max-width: 900px) {
+    .inputBox {
+        width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    /* leave room for the floating sidebar toggle in the top-left corner */
+    .navbar {
+        padding-left: 104px;
+    }
+
+    .dropDown {
+        right: 12px;
+    }
+
+    .attachmentBar {
+        padding: 0 1rem 10px;
+    }
+
+    .chats {
+        padding: 1rem 1rem 1.25rem;
+    }
+
+    .userMessage {
+        max-width: 85%;
+    }
+}

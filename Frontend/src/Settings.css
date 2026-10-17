@@ -1,0 +1,310 @@
+.settingsOverlay {
+    position: fixed;
+    inset: 0;
+    /* the modal is portalled inside .chatWindow, which centres its text */
+    text-align: left;
+    z-index: 2000;
+    background-color: var(--sg-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.settingsModal {
+    width: 100%;
+    max-width: 680px;
+    max-height: min(620px, 90vh);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--sg-bg-elevated);
+    border: 1px solid var(--sg-border);
+    border-radius: var(--sg-radius-lg);
+    box-shadow: var(--sg-shadow);
+    overflow: hidden;
+}
+
+.settingsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--sg-border);
+    flex-shrink: 0;
+}
+
+.settingsHeader h2 {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--sg-text);
+}
+
+.settingsBody {
+    display: flex;
+    min-height: 0;
+    flex: 1;
+}
+
+/* left tab rail */
+.settingsTabs {
+    width: 172px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 12px 8px;
+    border-right: 1px solid var(--sg-border);
+    overflow-y: auto;
+}
+
+.settingsTab {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 9px 10px;
+    background: transparent;
+    border: none;
+    border-radius: var(--sg-radius-sm);
+    color: var(--sg-text);
+    font-family: var(--sg-font);
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+
+.settingsTab i {
+    width: 16px;
+    font-size: 13px;
+    color: var(--sg-text-secondary);
+}
+
+.settingsTab:hover {
+    background-color: var(--sg-bg-hover);
+}
+
+.settingsTab.active {
+    background-color: var(--sg-bg-active);
+}
+
+.settingsTab.active i {
+    color: var(--sg-text);
+}
+
+/* right panel */
+.settingsPanel {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    padding: 16px 20px 20px;
+}
+
+.settingsSection {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.settingsRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--sg-border);
+}
+
+.settingsRow:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.settingsRowLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.settingsRowLabel span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sg-text);
+}
+
+.settingsRowLabel small {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--sg-text-muted);
+}
+
+.settingsStatic {
+    font-size: 14px;
+    color: var(--sg-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* theme picker */
+.themeChoice {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+    padding: 3px;
+    background-color: var(--sg-field);
+    border: 1px solid var(--sg-border);
+    border-radius: var(--sg-radius-sm);
+}
+
+.themeOption {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 11px;
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    color: var(--sg-text-secondary);
+    font-family: var(--sg-font);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.themeOption i {
+    font-size: 12px;
+    color: inherit;
+}
+
+.themeOption:hover {
+    color: var(--sg-text);
+}
+
+.themeOption.active {
+    background-color: var(--sg-bg-elevated);
+    color: var(--sg-text);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* forms */
+.settingsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.settingsField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--sg-text-secondary);
+}
+
+.settingsField input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 12px;
+    font-family: var(--sg-font);
+    font-size: 14px;
+    color: var(--sg-text);
+    background-color: var(--sg-field);
+    border: 1px solid var(--sg-border);
+    border-radius: var(--sg-radius-sm);
+    outline: none;
+}
+
+.settingsField input:focus {
+    border-color: var(--sg-border-strong);
+}
+
+.settingsCheckbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--sg-text-secondary);
+    cursor: pointer;
+}
+
+.settingsCheckbox input {
+    width: 14px;
+    height: 14px;
+    accent-color: var(--sg-accent);
+    cursor: pointer;
+}
+
+.settingsSubmit {
+    align-self: flex-start;
+    padding: 9px 16px;
+    font-family: var(--sg-font);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--sg-accent-text);
+    background-color: var(--sg-accent);
+    border: none;
+    border-radius: var(--sg-radius-sm);
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+}
+
+.settingsSubmit:hover:not(:disabled) {
+    opacity: 0.85;
+}
+
+.settingsSubmit:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.settingsMessage {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-size: 13px;
+    padding: 9px 12px;
+    border-radius: var(--sg-radius-sm);
+}
+
+.settingsMessage.ok,
+.settingsMessage.ok i {
+    color: var(--sg-success);
+    background-color: color-mix(in srgb, var(--sg-success) 10%, transparent);
+}
+
+.settingsMessage.error,
+.settingsMessage.error i {
+    color: var(--sg-danger);
+    background-color: color-mix(in srgb, var(--sg-danger) 10%, transparent);
+}
+
+.settingsMessage i {
+    background: none;
+    padding: 0;
+}
+
+@media (max-width: 620px) {
+    .settingsBody {
+        flex-direction: column;
+    }
+
+    .settingsTabs {
+        width: 100%;
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid var(--sg-border);
+    }
+
+    .settingsTab {
+        justify-content: center;
+    }
+
+    .settingsTab span {
+        display: none;
+    }
+}
